@@ -1,10 +1,9 @@
 {
 	"information_for_contributors": [
-		"This file has been converted from https://github.com/atom/language-go/blob/master/grammars/go.cson",
+		"This file is modified from https://github.com/atom/language-go/blob/master/grammars/go.cson",
 		"If you want to provide a fix or improvement, please create a pull request against the original repository.",
 		"Once accepted there, we are happy to receive an update request."
 	],
-	"version": "https://github.com/atom/language-go/commit/b6fd68f74efa109679e31fe6f4a41ac105262d0e",
 	"name": "lucy",
 	"scopeName": "source.lucy",
 	"comment": "lucy language",
@@ -58,93 +57,14 @@
 			]
 		},
 		{
-			"comment": "Syntax error receiving channels",
-			"match": "<\\-([\\t ]+)chan\\b",
-			"captures": {
-				"1": {
-					"name": "invalid.illegal.receive-channel.lucy"
-				}
-			}
-		},
-		{
-			"comment": "Syntax error sending channels",
-			"match": "\\bchan([\\t ]+)<-",
-			"captures": {
-				"1": {
-					"name": "invalid.illegal.send-channel.lucy"
-				}
-			}
-		},
-		{
-			"comment": "Syntax error using slices",
-			"match": "\\[\\](\\s+)",
-			"captures": {
-				"1": {
-					"name": "invalid.illegal.slice.lucy"
-				}
-			}
-		},
-		{
 			"comment": "Syntax error numeric literals",
 			"match": "\\b0[0-7]*[89]\\d*\\b",
 			"name": "invalid.illegal.numeric.lucy"
 		},
 		{
 			"comment": "Built-in functions",
-			"match": "\\b(append|cap|close|complex|copy|delete|imag|len|make|new|panic|print|println|real|recover)\\b(?=\\()",
+			"match": "\\b(copy|len|make|panic|print|printf|catch|assert|blackHole)\\b(?=\\()",
 			"name": "support.function.builtin.lucy"
-		},
-		{
-			"comment": "Function declarations",
-			"match": "^(\\bfunc\\b)(?:\\s+(\\([^\\)]+\\)\\s+)?(\\w+)(?=\\())?",
-			"captures": {
-				"1": {
-					"name": "keyword.function.lucy"
-				},
-				"2": {
-					"patterns": [
-						{
-							"include": "#brackets"
-						},
-						{
-							"include": "#operators"
-						}
-					]
-				},
-				"3": {
-					"patterns": [
-						{
-							"match": "\\d\\w*",
-							"name": "invalid.illegal.identifier.lucy"
-						},
-						{
-							"match": "\\w+",
-							"name": "entity.name.function.lucy"
-						}
-					]
-				}
-			}
-		},
-		{
-			"comment": "Functions",
-			"match": "(\\bfunc\\b)|(\\w+)(?=\\()",
-			"captures": {
-				"1": {
-					"name": "keyword.function.lucy"
-				},
-				"2": {
-					"patterns": [
-						{
-							"match": "\\d\\w*",
-							"name": "invalid.illegal.identifier.lucy"
-						},
-						{
-							"match": "\\w+",
-							"name": "support.function.lucy"
-						}
-					]
-				}
-			}
 		},
 		{
 			"comment": "Floating-point literals",
@@ -160,58 +80,6 @@
 			"comment": "Language constants",
 			"match": "\\b(true|false|null)\\b",
 			"name": "constant.language.lucy"
-		},
-		{
-			"begin": "\\b(package)\\s+",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.package.lucy"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"match": "\\d\\w*",
-					"name": "invalid.illegal.identifier.lucy"
-				},
-				{
-					"match": "\\w+",
-					"name": "entity.name.package.lucy"
-				}
-			]
-		},
-		{
-			"begin": "\\b(type)\\s+",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.type.lucy"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"match": "\\d\\w*",
-					"name": "invalid.illegal.identifier.lucy"
-				},
-				{
-					"match": "\\w+",
-					"name": "entity.name.type.lucy"
-				}
-			]
-		},
-		{
-			"begin": "\\b(import)\\s+",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.import.lucy"
-				}
-			},
-			"end": "(?!\\G)",
-			"patterns": [
-				{
-					"include": "#imports"
-				}
-			]
 		},
 		{
 			"begin": "\\b(var)\\s+",
@@ -387,52 +255,6 @@
 				}
 			]
 		},
-		"imports": {
-			"patterns": [
-				{
-					"match": "((?!\\s+\")[^\\s]*)?\\s*((\")([^\"]*)(\"))",
-					"captures": {
-						"1": {
-							"name": "entity.alias.import.lucy"
-						},
-						"2": {
-							"name": "string.quoted.double.lucy"
-						},
-						"3": {
-							"name": "punctuation.definition.string.begin.lucy"
-						},
-						"4": {
-							"name": "entity.name.import.lucy"
-						},
-						"5": {
-							"name": "punctuation.definition.string.end.lucy"
-						}
-					}
-				},
-				{
-					"begin": "\\(",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.imports.begin.bracket.round.lucy"
-						}
-					},
-					"end": "\\)",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.definition.imports.end.bracket.round.lucy"
-						}
-					},
-					"patterns": [
-						{
-							"include": "#comments"
-						},
-						{
-							"include": "#imports"
-						}
-					]
-				}
-			]
-		},
 		"keywords": {
 			"patterns": [
 				{
@@ -507,7 +329,6 @@
 			]
 		},
 		"operators": {
-			"comment": "Note that the order here is very important!",
 			"patterns": [
 				{
 					"match": "(\\*|&)(?=\\w)",
@@ -551,35 +372,6 @@
 				}
 			]
 		},
-		"runes": {
-			"patterns": [
-				{
-					"begin": "'",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.string.begin.lucy"
-						}
-					},
-					"end": "'",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.definition.string.end.lucy"
-						}
-					},
-					"name": "string.quoted.rune.lucy",
-					"patterns": [
-						{
-							"match": "\\G(\\\\([0-7]{3}|[abfnrtv\\\\'\"]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})|.)(?=')",
-							"name": "constant.other.rune.lucy"
-						},
-						{
-							"match": "[^']+",
-							"name": "invalid.illegal.unknown-rune.lucy"
-						}
-					]
-				}
-			]
-		},
 		"storage_types": {
 			"patterns": [
 				{
@@ -589,10 +381,6 @@
 				{
 					"match": "\\bbyte\\b",
 					"name": "storage.type.byte.lucy"
-				},
-				{
-					"match": "\\berror\\b",
-					"name": "storage.type.error.lucy"
 				},
 				{
 					"match": "\\b(float|double|char|int|long|short)\\b",

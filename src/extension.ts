@@ -93,7 +93,7 @@ function updateDiagnostics(document: vscode.TextDocument ,collection: vscode.Dia
                 );
                 d.push(t);
             }
-            collection.set(  vscode.Uri.file(filename ), d);
+            collection.set(vscode.Uri.file(filename), d);
         }
     });
 }

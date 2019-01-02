@@ -6,6 +6,9 @@
         "lucy",
         "plugin"
     ],
+    "repository": {
+        "url" : "https://github.com/lucyProgramming/vscode-lucy"
+    },
     "version": "0.0.1",
     "publisher": "yu",
     "engines": {

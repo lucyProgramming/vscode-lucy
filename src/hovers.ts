@@ -26,6 +26,7 @@ module.exports = class GoHoverProvider implements vscode.HoverProvider {
             } , function(error : any, response : any, body:any){
                 if(error) {
                     console.log(error);
+                    reject(error);
                     return ; 
                 }
                 var value = body;

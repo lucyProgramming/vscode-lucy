@@ -27,6 +27,7 @@ module.exports = class GoWorkSpaceSymbolProvider implements vscode.WorkspaceSymb
             request("http://localhost:2018/ide/allDefinition?dir=" + querystring.escape(file), function(error : any, response : any, body:any) {
                 if(error) {
                     console.log(error);
+                    reject(error);
                     return ; 
                 }
                 var definitions = JSON.parse(body);

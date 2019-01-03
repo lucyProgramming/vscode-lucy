@@ -25,6 +25,7 @@ module.exports = class GoCompletionItemProvider implements vscode.CompletionItem
             } ,  function(error : any, response : any, body:any) {
                 if(error) {
                     console.log(error);
+                    reject(error);
                     return ; 
                 }
                 console.log("call lucy server used:" , new Date().getTime()-now);

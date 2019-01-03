@@ -22,6 +22,7 @@ module.exports = class GoDocumentSymbolProvider implements vscode.DocumentSymbol
             request(u , function(error : any, response : any, body:any) {
                 if(error) {
                     console.log(error);
+                    reject(error);
                     return ; 
                 }
                 var definitions = JSON.parse(body);

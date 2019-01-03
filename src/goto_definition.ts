@@ -26,6 +26,7 @@ module.exports = class GoDefinitionProvider implements vscode.DefinitionProvider
             } , function(error : any, response : any, body:any) {
                 if(error) {
                     console.log(error);
+                    reject(error);
                     return ; 
                 }
                 let definition = JSON.parse(body);

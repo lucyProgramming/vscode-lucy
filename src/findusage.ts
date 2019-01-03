@@ -17,10 +17,13 @@ module.exports = class GoReferenceProvider implements vscode.ReferenceProvider {
         options: { includeDeclaration: boolean }, token: vscode.CancellationToken):
         Thenable<vscode.Location[]> {
         return new Promise(function(resolve ,reject) {
-            request("http://localhost:2018/ide/findUsage?file=" + querystring.escape(document.fileName) + "&line=" + 
-            position.line + "&column=" + position.character , function(error : any, response : any, body:any) {
+            var u = "http://localhost:2018/ide/findUsage?file=" + querystring.escape(document.fileName) + "&line=" + 
+            position.line + "&column=" + position.character ;
+            console.log(u);
+            request(u, function(error : any, response : any, body:any) {
                 if(error) {
                     console.log(error);
+                    reject(error);
                     return ; 
                 }
                 var usages = JSON.parse(body);

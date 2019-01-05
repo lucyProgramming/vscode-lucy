@@ -24,7 +24,7 @@ module.exports = function updateDiagnostics(
     }
     if(isSaveOrOpen === false){
         var now = new Date().getTime();
-        if ((now - lastTime) < 1000) {
+        if ((now - lastTime) < 2000) {
             return ;
         }
         lastTime = now ; 

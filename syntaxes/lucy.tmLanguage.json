@@ -321,6 +321,12 @@
 					"name": "keyword.static.lucy"
 				},
 				{
+					"comment": "new",
+					"match": "\\bnew\\b",
+					"name": "keyword.new.lucy"
+                },
+
+				{
 					"comment": "modifier",
 					"match": "\\b(volatile|synchronized|final|abstract)\\b",
 					"name": "keyword.modifier.lucy"

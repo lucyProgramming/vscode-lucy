@@ -18,7 +18,7 @@ module.exports = class GoReferenceProvider implements vscode.ReferenceProvider {
         Thenable<vscode.Location[]> {
         return new Promise(function(resolve ,reject) {
             var u = "http://localhost:2018/ide/findUsage?file=" + querystring.escape(document.fileName) + "&line=" + 
-            position.line + "&column=" + position.character ;
+                position.line + "&column=" + position.character ;
             console.log(u);
             request(u, function(error : any, response : any, body:any) {
                 if(error) {

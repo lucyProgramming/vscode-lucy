@@ -1,7 +1,7 @@
 {
 	"information_for_contributors": [
 		"This file is modified from https://github.com/atom/language-go/blob/master/grammars/go.cson",
-		"If you want to provide a fix or improvement, please create a pull request against the original repository.",
+		"If you want to provide a fix or improvement, please create a pull request at https://github.com/lucyProgramming/vscode-lucy",
 		"Once accepted there, we are happy to receive an update request."
 	],
 	"name": "lucy",
@@ -44,6 +44,27 @@
 				}
 			},
 			"end": "`",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.lucy"
+				}
+			},
+			"name": "string.quoted.raw.lucy",
+			"patterns": [
+				{
+					"include": "#string_placeholder"
+				}
+			]
+		},
+		{
+			"comment": "Raw string literals",
+			"begin": "'",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.lucy"
+				}
+			},
+			"end": "'",
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.definition.string.end.lucy"
